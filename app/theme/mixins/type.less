@@ -1,0 +1,26 @@
+@import (reference) "../type/type";
+@import (reference) "../layout/grid";
+
+@import (reference) "~basekick/mixin";
+
+.hero__type() {
+  .basekick(@hero-type-scale, @hero-type-row-span, @font-descender-height-scale, @base-font-size, @grid-row-height);
+};
+
+.heading__type() {
+  .basekick(@heading-type-scale, @heading-type-row-span, @font-descender-height-scale, @base-font-size, @grid-row-height);
+};
+
+.subheading__type() {
+  .basekick(@subheading-type-scale, @subheading-type-row-span, @font-descender-height-scale, @base-font-size, @grid-row-height);
+};
+
+.standard__type() {
+  .basekick(@standard-type-scale, @standard-type-row-span, @font-descender-height-scale, @base-font-size, @grid-row-height);
+};
+
+.interaction_type() {
+  font-size: unit(@interaction-type-scale, rem);
+  line-height: (@grid-row-height * @interaction-type-row-span);
+  //height: (@grid-row-height * @interaction-type-row-span);
+}

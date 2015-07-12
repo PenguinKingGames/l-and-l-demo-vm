@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+DIR=`cd $(dirname $0)/..; pwd`
+
+OPT=$1
+shift 1
+ARGS=$@
+
+$DIR/script/run $OPT test $ARGS

@@ -1,0 +1,13 @@
+node_modules
+public
+dist
+build/index.js
+.idea
+.vagrant
+*.log
+*.zip
+*.bz2
+*.tar
+.elasticbeanstalk/
+docker/.aws-env
+.DS_Store

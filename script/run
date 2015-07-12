@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+CWD=`pwd`
+DIR=`cd $(dirname $0)/..; pwd`
+
+OPT=$1
+shift 1
+ARGS=$@
+
+cd $DIR
+
+case "$OPT" in
+  dev)
+    echo "ARGS=$ARGS"
+    export NODE_ENV=development
+    rm -rf build
+    rm -rf public
+    ./node_modules/.bin/gulp dev $ARGS
+  ;;
+
+  test)
+    export NODE_ENV=testing
+    ./node_modules/.bin/gulp
+  ;;
+
+
+  *)
+    export NODE_ENV=production
+    rm -rf build
+    rm -rf public
+    node_modules/.bin/gulp
+    node_modules/.bin/uglifyjs public/main.js --mangle --compress warnings=false > public/main.min.js
+    #mv public/main.min.js public/main.js
+    cp public/main.min.js public/main.js
+    node build/index.js
+  ;;
+esac
+
+cd $CWD
