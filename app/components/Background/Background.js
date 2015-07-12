@@ -7,12 +7,9 @@ export default class Background extends React.Component {
     };
 
     render() {
-        let imageStyle = {
-          backgroundImage: 'url(' + this.props.backgroundImage + ')'
-        };
 
         return (
-            <div className={styles.background} style={imageStyle}>&nbsp;</div>
+            <div className={`${styles.background} ${styles['background' + this.props.backgroundImage]}`}>&nbsp;</div>
         );
     }
 }
