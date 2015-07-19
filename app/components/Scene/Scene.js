@@ -12,7 +12,13 @@ import Dialogue from 'Dialogue/Dialogue'
 @connect(state => ({
   scene: state.scene
 }))
-export default class Life extends React.Component {
+export default class Scene extends React.Component {
+
+  constructor(props) {
+    super(props);
+    const actions = bindActionCreators(sceneActions, props.dispatch);
+    actions.startScene(props.sceneName);
+  }
 
   render() {
     let { scene, dispatch } = this.props;
