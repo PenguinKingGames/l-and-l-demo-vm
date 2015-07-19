@@ -1,4 +1,4 @@
-import { CONTINUE } from '../constants/SceneActionTypes';
+import { CONTINUE, START } from '../constants/SceneActionTypes';
 
 import * as scenes from '../resources/scenes';
 
@@ -12,6 +12,13 @@ const initialState = {
 
 export default function scene(state = initialState, action) {
   switch (action.type) {
+
+    case START:
+      return {
+        ...scenes[action.scene],
+        currentLine: scenes[action.scene].initialLine
+      }
+      break;
 
     case CONTINUE:
       if (action.continueSpec) {
