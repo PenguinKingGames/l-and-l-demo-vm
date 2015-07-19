@@ -1,14 +1,13 @@
 {
-  "name": "company-profiles-hack",
+  "name": "l-and-l-prototype",
   "version": "0.0.0",
   "scripts": {
     "test": "script/test",
     "start": "script/run"
   },
-  "license": "MIT",
-  "repository": {
+    "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/bronsequences/companyprofileshack.git"
+    "url": "https://github.com/PenguinKingGames/l-and-l-demo-vm.git"
   },
   "dependencies": {
     "add-commas": "0.0.4",
@@ -25,7 +24,6 @@
     "extract-text-webpack-plugin": "^0.7.1",
     "fastclick": "^1.0.6",
     "file-loader": "^0.8.1",
-    "flummox": "^4.0.0-alpha2",
     "gulp": "^3.8.11",
     "jsesc": "^0.5.0",
     "less": "^1.7.5",
@@ -41,8 +39,13 @@
     "query-string": "^2.1.0",
     "raw-loader": "^0.5.1",
     "react": "^0.13.1",
+    "react-redux": "0.2.2",
     "react-router": "^0.13.2",
     "react-tools": "0.11.2",
+    "redux": "1.0.0-rc",
+    "redux-actions": "^0.7.0",
+    "redux-promise": "^0.4.0",
+    "redux-thunk": "^0.1.0",
     "source-map-support": "^0.2.10",
     "style-loader": "^0.8.2",
     "superagent": "^0.21.0",
@@ -52,8 +55,5 @@
     "uglify-js": "2.4.15",
     "url-loader": "^0.5.5",
     "webpack": "^1.8.11"
-  },
-  "devDependencies": {
-    "redux": "~0.12.0"
   }
 }
