@@ -14,7 +14,7 @@ const mapData = {
 
 const initialState = {
   ...mapData,
-  availableScenes: ['tsukikoRajaniDemo', 'tsukikoRajaniLol'],
+  availableScenes: ['tsukikoRajaniDemo', 'tsukikoRajaniChoices'],
   previewingScene: ''
 };
 
@@ -25,7 +25,7 @@ export default function lifeMap(state = initialState, action) {
       return {
         ...state,
         previewingScene: action.scene
-      }
+      };
       break;
 
     default:
