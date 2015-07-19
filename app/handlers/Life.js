@@ -1,12 +1,12 @@
 import React from 'react';
 
 import LifeComponent from '../components/Life/Life';
-import { createStore } from 'redux';
-import { Provider } from 'redux/react';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 import * as stores from '../stores';
 
-
-const lifeStore = createStore(stores);
+const reducer = combineReducers(stores);
+const lifeStore = createStore(reducer);
 
 class Life extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { bindActionCreators } from 'redux';
-import { connect } from 'redux/react';
+import { connect } from 'react-redux';
 
 import * as sceneActions from '../../actions/SceneActions';
 
