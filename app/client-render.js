@@ -8,8 +8,7 @@ export default function() {
   var div = document.getElementById('app');
 
   Router.run(routes, isWebServer ? Router.HistoryLocation : Router.HashLocation, function (Handler, state) {
-    // How will this affect analytics? Very good question...
-      React.render(<Handler />, div);
+       React.render(<Handler />, div);
       /*fetchData(state.routes, state)
         .catch(Promise.CancellationError, function(e) {
           // Swallow cancellations

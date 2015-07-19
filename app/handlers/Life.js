@@ -1,12 +1,12 @@
 import React from 'react';
 
 import LifeComponent from '../components/Life/Life';
-import { createRedux } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'redux/react';
 import * as stores from '../stores';
 
 
-const redux = createRedux(stores);
+const lifeStore = createStore(stores);
 
 class Life extends React.Component {
 
@@ -16,7 +16,7 @@ class Life extends React.Component {
 
     render() {
         return (
-            <Provider redux={redux}>
+            <Provider store={lifeStore}>
               {() =>
                 <LifeComponent />
               }
