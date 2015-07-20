@@ -1,6 +1,14 @@
 import React from 'react';
 import { RouteHandler } from 'react-router';
 
+import ResourcesBar from 'ResourcesBar/ResourcesBar'
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import * as stores from '../../stores';
+
+const reducer = combineReducers(stores);
+const lifeStore = createStore(reducer);
+
 class Life extends React.Component {
 
     static contextTypes = {
@@ -9,7 +17,14 @@ class Life extends React.Component {
 
     render() {
         return (
-          <RouteHandler {...this.props} />
+          <div>
+            <RouteHandler {...this.props} />
+            <Provider store={lifeStore}>
+              {() =>
+                <ResourcesBar />
+              }
+            </Provider>
+          </div>
         );
     }
 }
