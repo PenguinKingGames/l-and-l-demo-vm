@@ -1,27 +1,20 @@
 import React from 'react';
 
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import * as mapActions from '../../actions/LifeMapActions';
-
 import styles from './LifeMap.less';
 
 import Background from 'Background/Background'
 import AvailableScene from './AvailableScene/AvailableScene'
 
-@connect(state => ({
-  map: state.lifeMap
-}))
 export default class LifeMap extends React.Component {
 
   render() {
-    let { map, dispatch } = this.props;
-    const actions = bindActionCreators(mapActions, dispatch);
+    let map = this.props.lifeMap;
+    let actions = this.props.actions;
+    let scenes = this.props.scenes;
 
     let availableScenes = map.availableScenes.map(function(scene, index) {
       return (
-        <AvailableScene map={map} scene={scene} preview={actions.previewScene} key={index} />
+        <AvailableScene map={map} scene={scene} scenes={scenes} preview={actions.previewScene} select={actions.selectScene} key={index} />
       )
     });
 

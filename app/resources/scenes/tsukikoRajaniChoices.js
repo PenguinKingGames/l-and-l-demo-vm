@@ -126,7 +126,7 @@ export const tsukikoRajaniChoices = {
         position: 'Right'
       }],
       continueSpec: {
-        nextLine: 'choices01'
+        returnToMap: true
       }
     }
   }
