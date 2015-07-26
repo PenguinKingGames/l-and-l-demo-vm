@@ -1,3 +1,5 @@
+import { INCREMENT, DECREMENT } from '../constants/CharacterActionTypes';
+
 const initialState = {
   name: 'Tsukiko',
   flowers: [{
@@ -25,6 +27,32 @@ const initialState = {
 
 export default function scene(state = initialState, action) {
   switch (action.type) {
+
+    case INCREMENT:
+      let newFlowers = state.flowers.map(function(flower) {
+        if (flower.id === action.params.id) {
+          flower.count += action.params.increment;
+        }
+      });
+
+      return {
+        ...state,
+        flowers: newFlowers
+      };
+      break;
+
+    case DECREMENT:
+      let newFlowers = state.flowers.map(function(flower) {
+        if (flower.id === action.params.id) {
+          flower.count -= action.params.decrement;
+        }
+      });
+
+      return {
+        ...state,
+        flowers: newFlowers
+      };
+      break;
 
     default:
       return state;
