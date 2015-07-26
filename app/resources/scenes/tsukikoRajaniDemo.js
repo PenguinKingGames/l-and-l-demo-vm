@@ -145,7 +145,7 @@ export const tsukikoRajaniDemo = {
         position: 'Right'
       }],
       continueSpec: {
-        nextLine: 'tsukiko01'
+        returnToMap: true
       }
     }
   }

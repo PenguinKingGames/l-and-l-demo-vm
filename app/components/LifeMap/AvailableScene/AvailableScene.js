@@ -12,8 +12,12 @@ export default class AvailableScene extends React.Component {
     this.props.preview(this.props.scene);
   }
 
+  selectScene() {
+    this.props.select(this.props.scene);
+  }
+
   render() {
-    let scene = this.props.map.scenes[this.props.scene];
+    let scene = this.props.scenes[this.props.scene];
     let scenePreview;
 
     if(this.props.map.previewingScene === this.props.scene) {
@@ -21,7 +25,7 @@ export default class AvailableScene extends React.Component {
         <div>
           <BackgroundThumbnail backgroundImage={scene.background} />
           <div className={styles.description}>{scene.description}</div>
-          <a className={styles.select} href={`/life/scene/${this.props.scene}`}>Select</a>
+          <a className={styles.select} onClick={this.selectScene.bind(this)}>Select</a>
         </div>
       )
     }

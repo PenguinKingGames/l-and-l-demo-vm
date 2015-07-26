@@ -1,14 +1,14 @@
 import React from 'react';
 
-import LifeMapComponent from 'LifeMap/LifeMap';
+import GameComponent from 'Game/Game';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import * as stores from '../../stores';
+import * as stores from '../stores';
 
 const reducer = combineReducers(stores);
-const lifeStore = createStore(reducer);
+const gameStore = createStore(reducer);
 
-class LifeMap extends React.Component {
+class Game extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.func
@@ -16,13 +16,13 @@ class LifeMap extends React.Component {
 
   render() {
     return (
-      <Provider store={lifeStore}>
+      <Provider store={gameStore}>
         {() =>
-          <LifeMapComponent />
+          <GameComponent />
         }
       </Provider>
     );
   }
 }
 
-export default LifeMap;
+export default Game;
