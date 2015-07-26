@@ -5,6 +5,6 @@ After cloning the repo, do this:
 ```sh
 npm install
 gulp dev
-# open http://localhost:5000/
+# open http://localhost:5000/game
 ```
 
