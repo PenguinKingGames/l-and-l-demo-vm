@@ -1,0 +1,46 @@
+@import (reference) "~theme";
+
+.flowersBarFrame {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  border: 3px solid crimson;
+  background: black;
+  padding: 9px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.flower {
+  font-size: 1.8rem;
+  margin-right: 18px;
+}
+
+.rose {
+  &:extend(.flower);
+  color: red;
+}
+
+.lily {
+  &:extend(.flower);
+  color: white;
+}
+
+.iris {
+  &:extend(.flower);
+  color: blue;
+}
+
+.azalea {
+  &:extend(.flower);
+  color: deeppink;
+}
+
+.chrysanthemum {
+  &:extend(.flower);
+  color: gold;
+}
+
+
+

@@ -1,3 +1,3 @@
 export const exteriorMap = {
-  background: 'Exterior'
+  background: 'ExteriorStudents'
 };
