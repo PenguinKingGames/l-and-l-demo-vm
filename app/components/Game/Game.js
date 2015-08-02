@@ -8,6 +8,7 @@ import * as screenTypes from '../../constants/Screens';
 
 import Scene from 'Scene/Scene'
 import LifeMap from 'LifeMap/LifeMap'
+import FlowersBar from 'FlowersBar/FlowersBar'
 
 @connect(state => ({
   game: state.game
@@ -42,7 +43,11 @@ export default class Game extends React.Component {
     }();
 
     return(
-      <div>{screen}</div>
+
+      <div>
+        {screen}
+        <FlowersBar flowers={game.character.flowers} />
+      </div>
     )
   }
 };

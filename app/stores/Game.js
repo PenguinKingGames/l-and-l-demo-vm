@@ -3,7 +3,8 @@ import { PREVIEW, SELECT } from '../constants/LifeMapActionTypes';
 
 import * as scenes from '../resources/scenes';
 import * as lifeMaps from '../resources/lifeMaps';
-import * as screenTypes from '../constants/Screens'
+import * as characters from '../resources/characters';
+import * as screenTypes from '../constants/Screens';
 
 
 const initialScene = 'tsukikoRajaniDemo';
@@ -12,19 +13,22 @@ const initialMap = 'exteriorMap';
 const initialLifeMapData = lifeMaps[initialMap];
 
 
+
 //By convention we only mutate the stuff directly declared in this object, not the spread imports
 const initialState = {
   scenes: scenes,
   lifeMaps: lifeMaps,
+  characters: characters,
   scene: {
     ...initialSceneData,
     currentLine: initialSceneData.initialLine
   },
   lifeMap: {
     ...initialLifeMapData,
-    availableScenes: ['tsukikoRajaniDemo', 'tsukikoRajaniChoices'],
+    availableScenes: ['tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers'],
     previewingScene: ''
   },
+  character: characters['tsukiko'],
   screen: screenTypes.LIFEMAP
 };
 
@@ -50,8 +54,29 @@ export default function game(state = initialState, action) {
           ...currentScene,
           currentLine: action.continueSpec.nextLine
         };
+        let character = state.character;
+
+        if (action.continueSpec.flowers) {
+          if (action.continueSpec.flowers.rose) {
+            character.flowers.rose += action.continueSpec.flowers.rose;
+          }
+          if (action.continueSpec.flowers.lily) {
+            character.flowers.lily += action.continueSpec.flowers.lily;
+          }
+          if (action.continueSpec.flowers.iris) {
+            character.flowers.iris += action.continueSpec.flowers.iris;
+          }
+          if (action.continueSpec.flowers.azalea) {
+            character.flowers.azalea += action.continueSpec.flowers.azalea;
+          }
+          if (action.continueSpec.flowers.chrysanthemum) {
+            character.flowers.crysanthemum += action.continueSpec.flowers.chrysanthemum;
+          }
+        }
+
         return {
           ...state,
+          character: character,
           scene: scene
         };
       }
