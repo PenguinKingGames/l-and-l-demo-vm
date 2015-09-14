@@ -28,7 +28,7 @@ const initialState = {
   },
   lifeMap: {
     ...initialLifeMapData,
-    availableScenes: ['tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers'],
+    availableScenes: ['aiyanaRajaniClubRoom', 'tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers', 'tsukikoRajaniClubRoom'],
     previewingScene: ''
   },
   character: characters['tsukiko'],
