@@ -9,6 +9,8 @@ import * as screenTypes from '../../constants/Screens';
 import Scene from 'Scene/Scene'
 import LifeMap from 'LifeMap/LifeMap'
 import FlowersBar from 'FlowersBar/FlowersBar'
+import CharacterSheetButton from 'CharacterSheetButton/CharacterSheetButton';
+import CharacterSheet from 'CharacterSheet/CharacterSheet';
 
 @connect(state => ({
   game: state.game
@@ -26,14 +28,27 @@ export default class Game extends React.Component {
       switch (game.screen) {
         case screenTypes.SCENE:
           return (
-            <Scene scene={game.scene} actions={actions} />
+            <div>
+              <Scene scene={game.scene} actions={actions} />
+              <FlowersBar flowers={game.character.flowers} />
+              <CharacterSheetButton open={actions.openCharacterSheet} />
+            </div>
           );
           break;
         case screenTypes.LIFEMAP:
           return (
-            <LifeMap lifeMap={game.lifeMap} scenes={game.scenes} actions={actions} />
+            <div>
+              <LifeMap lifeMap={game.lifeMap} scenes={game.scenes} actions={actions} />
+              <FlowersBar flowers={game.character.flowers} />
+              <CharacterSheetButton open={actions.openCharacterSheet} />
+            </div>
           );
           break;
+        case screenTypes.CHARACTER_SHEET:
+          return (
+            <CharacterSheet character={game.character} actions={actions} />
+          );
+        break;
         default:
           return (
             <div>Well that went poorly</div>
@@ -46,7 +61,6 @@ export default class Game extends React.Component {
 
       <div>
         {screen}
-        <FlowersBar flowers={game.character.flowers} />
       </div>
     )
   }

@@ -1,13 +1,15 @@
 import { CONTINUE, START } from '../constants/SceneActionTypes';
 import { PREVIEW, SELECT } from '../constants/LifeMapActionTypes';
+import { OPEN_CHARACTER_SHEET, RETURN_TO_PREVIOUS } from '../constants/GenericActionTypes';
 
 import * as scenes from '../resources/scenes';
 import * as lifeMaps from '../resources/lifeMaps';
 import * as characters from '../resources/characters';
 import * as screenTypes from '../constants/Screens';
 
-import sceneLibrary from './StoreLibraries/scene'
-import lifeMapLibrary from './StoreLibraries/lifeMap'
+import sceneLibrary from './StoreLibraries/scene';
+import lifeMapLibrary from './StoreLibraries/lifeMap';
+import genericLibrary from './StoreLibraries/genericLibrary.js';
 
 
 const initialScene = 'tsukikoRajaniDemo';
@@ -31,8 +33,9 @@ const initialState = {
     availableScenes: ['aiyanaRajaniClubRoom', 'tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers', 'tsukikoRajaniClubRoom'],
     previewingScene: ''
   },
-  character: characters['tsukiko'],
-  screen: screenTypes.LIFEMAP
+  character: characters['aiyana'],
+  screen: screenTypes.LIFEMAP,
+  returnScreen: screenTypes.LIFEMAP
 };
 
 export default function game(state = initialState, action) {
@@ -53,6 +56,14 @@ export default function game(state = initialState, action) {
 
     case SELECT:
       return lifeMapLibrary.select(state, action);
+      break;
+
+    case OPEN_CHARACTER_SHEET:
+      return genericLibrary.openCharacterSheet(state, action);
+      break;
+
+    case RETURN_TO_PREVIOUS:
+      return genericLibrary.returnToPrevious(state, action);
       break;
 
     default:
