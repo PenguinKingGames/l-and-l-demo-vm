@@ -1,6 +1,7 @@
 export const aiyana = {
   name: 'Aiyana',
   class: 'Guardian',
+  level: 1,
   flowers: {
     rose: 0,
     lily: 0,
@@ -11,7 +12,7 @@ export const aiyana = {
   relationships: {
     rose: {},
     lily: {
-      character: 'takako',
+      character: 'Takako',
       power: 'girlfriend1'
     },
     iris: {},

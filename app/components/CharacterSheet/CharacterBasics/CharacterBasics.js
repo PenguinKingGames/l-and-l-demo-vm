@@ -13,6 +13,7 @@ export default class CharacterBasics extends React.Component {
     return (
       <div className={styles.characterBasics}>
         <div className={styles.name}>{character.name}</div>
+        <div className={styles.class}>Level {character.level} {character.class}</div>
       </div>
     );
   }

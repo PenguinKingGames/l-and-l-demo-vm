@@ -1,3 +1,11 @@
-/**
- * Created by Jye on 10/26/2015.
- */
+import React from 'react';
+
+export default class RelationshipGrid extends React.Component {
+  constructor(props, context) {
+    super(props);
+  };
+
+  render () {
+
+  }
+}
