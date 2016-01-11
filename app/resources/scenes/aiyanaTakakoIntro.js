@@ -79,12 +79,14 @@ export const aiyanaTakakoIntro = {
       choices: [{
         text: 'Bandits attacked our ship',
         continueSpec: {
-          nextLine: 'aiyana03'
+          nextLine: 'aiyana03',
+          flag: 'AIYANA_INTRO_BANDITS'
         }
       }, {
         text: 'River monsters',
         continueSpec: {
-          nextLine: 'aiyana05'
+          nextLine: 'aiyana05',
+          flag: 'AIYANA_INTRO_RIVER_MONSTERS'
         }
       }]
     },
@@ -138,7 +140,7 @@ export const aiyanaTakakoIntro = {
     },
     takako05: {
       name: 'Takako',
-      text: 'You are a poor liar, I expect the militia helped a little while you crushed the bandits.  Well, this does bode well for the Rose Siege, and poorly for the Azalea and Chrysanthemum.  ',
+      text: 'You are a poor liar, I expect the militia helped a little while you crushed the bandits.  Well, this does bode well for the Rose Siege, and poorly for the Azalea and Chrysanthemum.',
       portraits: [{
         character: 'Aiyana',
         expression: 'Humble',
@@ -149,8 +151,124 @@ export const aiyanaTakakoIntro = {
         position: 'Right'
       }],
       continueSpec: {
-        nextLine: 'aiyana04'
+        nextLine: 'takako08'
       }
+    },
+    aiyana05: {
+      name: 'Aiyana',
+      text: 'An old dungeon on the banks of Elderweiss had repopulated with amphibious monsters.  They attacked our ship and holed it below the waterline in a dozen places before assaulting the crew.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Grumpy',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'PleaseExplain',
+        position: 'Right'
+      }],
+      continueSpec: {
+        nextLine: 'takako06'
+      }
+    },
+    takako06: {
+      name: 'Takako',
+      text: 'The Elderweiss?  Why did I not receive a report from the Adventurers\' Society?',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Grumpy',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Alarmed',
+        position: 'Right'
+      }],
+      continueSpec: {
+        nextLine: 'aiyana06'
+      }
+    },
+    aiyana06: {
+      name: 'Aiyana',
+      text: 'Well, I\'m a provisional member myself, so when I helped the crew deal with the monsters, technically the issue was resolved.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Humble',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Alarmed',
+        position: 'Right'
+      }],
+      continueSpec: {
+        nextLine: 'takako07'
+      }
+    },
+    takako07: {
+      name: 'Takako',
+      text: 'You...helped...a passenger boat crew against the sort of threat we do not dare commit trained soldiers against.  I\'m sure you were very...helpful.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Humble',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Impressed',
+        position: 'Right'
+      }],
+      continueSpec: {
+        nextLine: 'takako08'
+      }
+    },
+    takako08: {
+      name: 'Takako',
+      text: 'It seems your reputation from the rebellion has not been much exaggerated.  I am most pleased, but you should be aware that at this school with its princesses and prodigies you cannot rest on past deeds.  You must strive and achieve here, every day, if you do not wish to fade into the crowd.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Humble',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Guarded',
+        position: 'Right'
+      }],
+      continueSpec: {
+        conditional: {
+          criteria: [{
+            type: 'flag',
+            flag: 'AIYANA_INTRO_BANDITS',
+            nextLine: 'aiyana07'
+          }, {
+            type: 'flag',
+            flag: 'AIYANA_INTRO_RIVER_MONSTERS',
+            nextLine: 'aiyana08'
+          }]
+        }
+      }
+    },
+    aiyana07: {
+      name: 'Aiyana',
+      text: 'Well let\'s see if you have any bandits!',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Humble',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Guarded',
+        position: 'Right'
+      }]
+    },
+    aiyana08: {
+      name: 'Aiyana',
+      text: 'Well let\'s see if you have any river monsters!',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Humble',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Guarded',
+        position: 'Right'
+      }]
     }
   }
 };

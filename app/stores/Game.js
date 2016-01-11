@@ -37,7 +37,8 @@ const initialState = {
   },
   character: characters['aiyana'],
   screen: screenTypes.LIFEMAP,
-  returnScreen: screenTypes.LIFEMAP
+  returnScreen: screenTypes.LIFEMAP,
+  flags: {}
 };
 
 export default function game(state = initialState, action) {
