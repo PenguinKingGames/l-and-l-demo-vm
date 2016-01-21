@@ -5,4 +5,6 @@ const girlfriend = {
     description: '+3 Damage',
     boost: "+6 Damage"
   }
-}
+};
+
+export default girlfriend;

@@ -46,7 +46,7 @@ export default class Game extends React.Component {
           break;
         case screenTypes.CHARACTER_SHEET:
           return (
-            <CharacterSheet character={game.character} actions={actions} />
+            <CharacterSheet character={game.character} powers={game.powers} actions={actions} />
           );
         break;
         default:
