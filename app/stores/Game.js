@@ -5,6 +5,7 @@ import { OPEN_CHARACTER_SHEET, RETURN_TO_PREVIOUS } from '../constants/GenericAc
 import * as scenes from '../resources/scenes';
 import * as lifeMaps from '../resources/lifeMaps';
 import * as characters from '../resources/characters';
+import * as powers from '../resources/powers';
 import * as screenTypes from '../constants/Screens';
 
 import sceneLibrary from './StoreLibraries/scene';
@@ -24,18 +25,20 @@ const initialState = {
   scenes: scenes,
   lifeMaps: lifeMaps,
   characters: characters,
+  powers: powers,
   scene: {
     ...initialSceneData,
     currentLine: initialSceneData.initialLine
   },
   lifeMap: {
     ...initialLifeMapData,
-    availableScenes: ['aiyanaRajaniClubRoom', 'tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers', 'tsukikoRajaniClubRoom'],
+    availableScenes: ['aiyanaRajaniClubRoom', 'aiyanaTakakoIntro', 'tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers', 'tsukikoRajaniClubRoom', 'aiyanaTsukikoTall'],
     previewingScene: ''
   },
   character: characters['aiyana'],
   screen: screenTypes.LIFEMAP,
-  returnScreen: screenTypes.LIFEMAP
+  returnScreen: screenTypes.LIFEMAP,
+  flags: {}
 };
 
 export default function game(state = initialState, action) {

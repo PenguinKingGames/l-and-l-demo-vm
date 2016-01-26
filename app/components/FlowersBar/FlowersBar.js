@@ -15,7 +15,7 @@ export default class FlowersBar extends React.Component {
         <div className={styles.lily}>Lilies: {flowers.lily}</div>
         <div className={styles.iris}>Irises: {flowers.iris}</div>
         <div className={styles.azalea}>Azaleas: {flowers.azalea}</div>
-        <div className={styles.chrysanthemum}>Crysthanthemums: {flowers.chrysanthemum}</div>
+        <div className={styles.chrysanthemum}>Chrysanthemums: {flowers.chrysanthemum}</div>
       </div>
     );
   }

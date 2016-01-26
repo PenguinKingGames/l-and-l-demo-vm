@@ -1,6 +1,14 @@
 export const aiyana = {
   name: 'Aiyana',
   class: 'Guardian',
+  level: 1,
+  facets: {
+    moxie: 4,
+    grace: 2,
+    focus: 1,
+    craft: 3,
+    shine: 2
+  },
   flowers: {
     rose: 0,
     lily: 0,
@@ -9,13 +17,20 @@ export const aiyana = {
     chrysanthemum: 0
   },
   relationships: {
-    rose: {},
+    rose: null,
     lily: {
-      character: 'takako',
+      characterName: 'Takako',
+      relationshipLabel: 'Girlfriend',
+      powerTree: 'girlfriend',
       power: 'girlfriend1'
     },
-    iris: {},
-    azalea: {},
-    chrysanthemum: {}
+    iris: {
+      characterName: 'Rajani',
+      relationshipLabel: 'The Idol',
+      powerTree: 'idol',
+      power: 'idol1'
+    },
+    azalea: null,
+    chrysanthemum: null
   }
 };
