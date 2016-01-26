@@ -17,15 +17,20 @@ export const aiyana = {
     chrysanthemum: 0
   },
   relationships: {
-    rose: {},
+    rose: null,
     lily: {
       characterName: 'Takako',
       relationshipLabel: 'Girlfriend',
       powerTree: 'girlfriend',
       power: 'girlfriend1'
     },
-    iris: {},
-    azalea: {},
-    chrysanthemum: {}
+    iris: {
+      characterName: 'Rajani',
+      relationshipLabel: 'The Idol',
+      powerTree: 'idol',
+      power: 'idol1'
+    },
+    azalea: null,
+    chrysanthemum: null
   }
 };

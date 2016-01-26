@@ -15,17 +15,24 @@ export default class CharacterSheetPower extends React.Component {
       case 'specialAttack':
         powerType = 'Special Attack';
         break;
+      case 'utility':
+        powerType = 'Utility';
+        break;
+      case 'basicAttack':
+        powerType = 'Basic Attack';
+        break;
     }
 
     if (power.boost) {
-      boost = (<div className={styles.boost}><strong>Boost: </strong>{power.boost}</div>);
+      boost = (<div className={styles.boost}><span className={styles.label}>Boost: </span>{power.boost}</div>);
     }
 
     return (
       <div className={styles.power}>
         <div className={styles.name}>{power.name}</div>
-        <div className={styles.type}><strong>Type: </strong>{powerType}</div>
-        <div classname={styles.effect}><strong>Effect: </strong>{power.description}</div>
+        <div className={styles.level}><span className={styles.label}>Level: </span>{power.level}</div>
+        <div className={styles.type}><span className={styles.label}>Type: </span>{powerType}</div>
+        <div classname={styles.effect}><span className={styles.label}>Effect: </span>{power.description}</div>
         {boost}
       </div>
     );

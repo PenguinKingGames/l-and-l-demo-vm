@@ -17,8 +17,8 @@ export default class Relationship extends React.Component {
         <div className={styles.relationshipHeader}>
           <span className={styles.name}>{relationship.characterName}</span>
           <span className={styles.relationshipLabel}> ({relationship.relationshipLabel})</span>
-          <CharacterSheetPower power={power} />
         </div>
+        <CharacterSheetPower power={power} />
 
       </div>
     );
