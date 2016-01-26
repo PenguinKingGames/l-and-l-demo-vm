@@ -23,7 +23,7 @@ export default {
       return {
         ...state,
         scene: selectedScene,
-        screen: screenTypes.SCENE
+        screen: screenTypes.SCENE_TRANSITION
       };
     }
 }

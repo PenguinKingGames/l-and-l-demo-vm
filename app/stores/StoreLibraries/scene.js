@@ -73,7 +73,8 @@ export default {
     };
     return {
       ...state,
-      scene: scene
+      scene: scene,
+      screen: screenTypes.SCENE
     };
   }
 };
