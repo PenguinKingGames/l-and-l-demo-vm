@@ -7,6 +7,7 @@ import * as gameActions from '../../actions/GameActions';
 import * as screenTypes from '../../constants/Screens';
 
 import Scene from 'Scene/Scene'
+import SceneTransition from 'SceneTransition/SceneTransition'
 import LifeMap from 'LifeMap/LifeMap'
 import FlowersBar from 'FlowersBar/FlowersBar'
 import CharacterSheetButton from 'CharacterSheetButton/CharacterSheetButton';
@@ -26,6 +27,13 @@ export default class Game extends React.Component {
     const actions = bindActionCreators(gameActions, dispatch);
     let screen = function() {
       switch (game.screen) {
+        case screenTypes.SCENE_TRANSITION:
+          return (
+            <div>
+              <SceneTransition scene={game.scene} actions={actions} />
+            </div>
+          );
+          break;
         case screenTypes.SCENE:
           return (
             <div>

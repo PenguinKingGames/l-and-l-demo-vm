@@ -1,6 +1,7 @@
 export { aiyanaRajaniClubRoom as aiyanaRajaniClubRoom } from './aiyanaRajaniClubRoom.js';
 export { aiyanaTakakoIntro as aiyanaTakakoIntro } from './aiyanaTakakoIntro.js';
 export { aiyanaTsukikoTall as aiyanaTsukikoTall } from './aiyanaTsukikoTall.js';
+export { aiyanaTsukikoClassIntro as aiyanaTsukikoClassIntro } from './aiyanaTsukikoClassIntro.js';
 export { tsukikoRajaniDemo as tsukikoRajaniDemo } from './tsukikoRajaniDemo';
 export { tsukikoRajaniAfterSchool as tsukikoRajaniAfterSchool } from './tsukikoRajaniAfterSchool';
 export { tsukikoRajaniChoices as tsukikoRajaniChoices } from './tsukikoRajaniChoices';
