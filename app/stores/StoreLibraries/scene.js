@@ -63,6 +63,19 @@ export default {
         screen: screenTypes.LIFEMAP
       }
     }
+    if (action.continueSpec.transitionToScene) {
+      //TODO: This code is in like three places, DRY it
+      let newScene = state.scenes[action.continueSpec.transitionToScene];
+      let selectedScene = {
+        ...newScene,
+        currentLine: newScene.initialLine
+      };
+      return {
+        ...state,
+        scene: selectedScene,
+        screen: screenTypes.SCENE_TRANSITION
+      };
+    }
   },
 
   start: function(state, action) {

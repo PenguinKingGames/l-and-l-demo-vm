@@ -255,7 +255,10 @@ export const aiyanaTakakoIntro = {
         character: 'Takako',
         expression: 'Guarded',
         position: 'Right'
-      }]
+      }],
+      continueSpec: {
+        transitionToScene: 'aiyanaTsukikoClassIntro'
+      }
     },
     aiyana08: {
       name: 'Aiyana',
@@ -268,7 +271,10 @@ export const aiyanaTakakoIntro = {
         character: 'Takako',
         expression: 'Guarded',
         position: 'Right'
-      }]
+      }],
+      continueSpec: {
+        transitionToScene: 'aiyanaTsukikoClassIntro'
+      }
     }
   }
 };
