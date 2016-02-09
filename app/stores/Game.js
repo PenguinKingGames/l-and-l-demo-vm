@@ -35,6 +35,10 @@ const initialState = {
     availableScenes: ['aiyanaRajaniClubRoom', 'aiyanaTakakoIntro', 'tsukikoRajaniDemo', 'tsukikoRajaniChoices', 'tsukikoRajaniAfterSchool', 'tsukikoRajaniBetweenClasses', 'tsukikoRajaniFlowers', 'tsukikoRajaniClubRoom', 'aiyanaTsukikoTall'],
     previewingScene: ''
   },
+  time: {
+    day: 1,
+    phase: 'Morning'
+  },
   character: characters['aiyana'],
   screen: screenTypes.LIFEMAP,
   returnScreen: screenTypes.LIFEMAP,

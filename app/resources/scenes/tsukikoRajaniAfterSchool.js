@@ -17,7 +17,10 @@ export const tsukikoRajaniAfterSchool = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          by: 6
+        }
       }
     }
   }

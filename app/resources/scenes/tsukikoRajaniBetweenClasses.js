@@ -17,7 +17,13 @@ export const tsukikoRajaniBetweenClasses = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          to: {
+            day: 12,
+            phase: 'Evening'
+          }
+        }
       }
     }
   }

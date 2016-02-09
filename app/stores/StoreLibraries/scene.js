@@ -57,14 +57,21 @@ export default {
         flags: flags
       };
     }
+
     if (action.continueSpec.returnToMap) {
+
+      let newTime = this.checktime(action, state.time);
+
       return {
         ...state,
-        screen: screenTypes.LIFEMAP
+        screen: screenTypes.LIFEMAP,
+        time: newTime
       }
     }
     if (action.continueSpec.transitionToScene) {
       //TODO: This code is in like three places, DRY it
+      let newTime = this.checktime(action, state.time);
+
       let newScene = state.scenes[action.continueSpec.transitionToScene];
       let selectedScene = {
         ...newScene,
@@ -73,8 +80,32 @@ export default {
       return {
         ...state,
         scene: selectedScene,
-        screen: screenTypes.SCENE_TRANSITION
+        screen: screenTypes.SCENE_TRANSITION,
+        time: newTime
       };
+    }
+  },
+
+  checktime: function(action, time) {
+    let newTime = {
+      day: time.day,
+      phase: time.phase
+    };
+
+    if (action.continueSpec.advanceTime) {
+      if (action.continueSpec.advanceTime.by) {
+        newTime = this.advanceTimeByPhases(time, action.continueSpec.advanceTime.by);
+      }
+
+      if (action.continueSpec.advanceTime.to) {
+        newTime = this.advanceTimeTo(time, action.continueSpec.advanceTime.to.day, action.continueSpec.advanceTime.to.phase);
+      }
+    }
+
+    return {
+      ...time,
+      day: newTime.day,
+      phase: newTime.phase
     }
   },
 
@@ -89,5 +120,48 @@ export default {
       scene: scene,
       screen: screenTypes.SCENE
     };
+  },
+
+  advanceTimeByPhases: function(timeState, phases) {
+    let day = timeState.day;
+    let phase = timeState.phase;
+
+    const advanceOnePhase = function() {
+      //TODO: constants, make less stupid
+      switch (phase) {
+        case 'Evening':
+          day = day + 1;
+          phase = 'Morning';
+          break;
+        case 'After school':
+          phase = 'Evening';
+          break;
+        case 'Afternoon':
+          phase = 'After school';
+          break;
+        case 'Morning':
+          phase = 'Afternoon';
+          break;
+      }
+    };
+
+    for (var i = 0; i < phases - 1; i++) {
+      advanceOnePhase();
+    }
+
+    return {
+      ...timeState,
+      day: day,
+      phase: phase
+    }
+  },
+
+  advanceTimeTo: function(timeState, day, phase) {
+    return {
+      ...timeState,
+      day: day,
+      phase: phase
+    }
   }
+
 };

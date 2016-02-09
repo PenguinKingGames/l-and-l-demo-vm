@@ -12,6 +12,7 @@ import LifeMap from 'LifeMap/LifeMap'
 import FlowersBar from 'FlowersBar/FlowersBar'
 import CharacterSheetButton from 'CharacterSheetButton/CharacterSheetButton';
 import CharacterSheet from 'CharacterSheet/CharacterSheet';
+import TimeDisplay from 'TimeDisplay/TimeDisplay';
 
 @connect(state => ({
   game: state.game
@@ -39,6 +40,7 @@ export default class Game extends React.Component {
             <div>
               <Scene scene={game.scene} actions={actions} />
               <FlowersBar flowers={game.character.flowers} />
+              <TimeDisplay time={game.time} />
               <CharacterSheetButton open={actions.openCharacterSheet} />
             </div>
           );
@@ -48,6 +50,7 @@ export default class Game extends React.Component {
             <div>
               <LifeMap lifeMap={game.lifeMap} scenes={game.scenes} actions={actions} />
               <FlowersBar flowers={game.character.flowers} />
+              <TimeDisplay time={game.time} />
               <CharacterSheetButton open={actions.openCharacterSheet} />
             </div>
           );

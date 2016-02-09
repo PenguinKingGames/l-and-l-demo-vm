@@ -17,7 +17,10 @@ export const tsukikoRajaniClubRoom = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          by: 2
+        }
       }
     }
   }
