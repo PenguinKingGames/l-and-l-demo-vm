@@ -61,11 +61,17 @@ export default {
     if (action.continueSpec.returnToMap) {
 
       let newTime = this.checktime(action, state.time);
+      let lifeMap = state.lifeMap;
+      let availableScenes = this.getAvailableScenes(state);
 
       return {
         ...state,
         screen: screenTypes.LIFEMAP,
-        time: newTime
+        time: newTime,
+        lifeMap: {
+          ...lifeMap,
+          availableScenes: availableScenes
+        }
       }
     }
     if (action.continueSpec.transitionToScene) {
@@ -77,11 +83,20 @@ export default {
         ...newScene,
         currentLine: newScene.initialLine
       };
+
+      let lifeMap = state.lifeMap;
+      let usedScenes = lifeMap.usedScenes;
+      usedScenes.push(action.continueSpec.transitionToScene);
+
       return {
         ...state,
         scene: selectedScene,
         screen: screenTypes.SCENE_TRANSITION,
-        time: newTime
+        time: newTime,
+        lifeMap: {
+          ...lifeMap,
+          usedScenes: usedScenes
+        }
       };
     }
   },
@@ -162,6 +177,31 @@ export default {
       day: day,
       phase: phase
     }
-  }
+  },
 
+  getAvailableScenes: function(state) {
+    let newAvailable = [];
+
+    let sceneKeys = Object.keys(state.scenes);
+
+    sceneKeys.forEach(function(key) {
+
+      if (state.lifeMap.usedScenes.some(function (usedScene) {
+          return usedScene === key;
+        })) {
+        return;
+      }
+
+      if (state.scenes[key]) {
+        let scene = state.scenes[key];
+        if (scene.availability) {
+          //TODO: check availability
+        } else {
+          newAvailable.push(key);
+        }
+      }
+    });
+
+    return newAvailable;
+  }
 };
