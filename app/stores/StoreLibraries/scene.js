@@ -62,7 +62,7 @@ export default {
 
       let newTime = this.checktime(action, state.time);
       let lifeMap = state.lifeMap;
-      let availableScenes = this.getAvailableScenes(state);
+      let availableScenes = this.getAvailableScenes(state, newTime);
 
       return {
         ...state,
@@ -179,7 +179,7 @@ export default {
     }
   },
 
-  getAvailableScenes: function(state) {
+  getAvailableScenes: function(state, time) {
     let newAvailable = [];
 
     let sceneKeys = Object.keys(state.scenes);
@@ -194,9 +194,48 @@ export default {
 
       if (state.scenes[key]) {
         let scene = state.scenes[key];
-        if (scene.availability) {
-          //TODO: check availability
-        } else {
+        let available = !!scene.availability;  //Don't want the object, just its truthiness
+
+        if (available) {
+          if (scene.availability.flag && !state.flags[scene.availability.flag]) {
+            available = false;
+          }
+
+          if (scene.availability.phase && !(time.phase === scene.availability.phase)) {
+            available = false;
+          }
+
+          if (scene.availability.on && !(time.day === scene.availability.on)) {
+            available = false;
+          }
+
+          if (scene.availability.before && !(time.day < scene.availability.before)) {
+            available = false;
+          }
+
+          if (scene.availability.after && !(time.day > scene.availability.after)) {
+            available = false;
+          }
+
+          if (scene.availability.relationship) {
+            let targetRelationship = scene.availability.relationship;
+            let relationshipPresent = false;
+            let relationshipKeys = Object.keys(state.character.relationships);
+
+            relationshipKeys.forEach(function(key) {
+              let relationship = state.character.relationships[key];
+              if (relationship && relationship.characterName === targetRelationship.characterName && relationship.powerTree === targetRelationship.powerTree) {
+                relationshipPresent = true;
+              }
+            });
+
+            if (!relationshipPresent) {
+              available = false;
+            }
+          }
+        }
+
+        if (available) {
           newAvailable.push(key);
         }
       }

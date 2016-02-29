@@ -2,6 +2,7 @@ export const tsukikoRajaniBetweenClasses = {
   background: 'ExteriorStudents',
   name: 'Holding Pattern',
   description:  'Tsukiko and Rajani elegantly spend a few moments afforded by a break in their studies.',
+  availability: true,
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {

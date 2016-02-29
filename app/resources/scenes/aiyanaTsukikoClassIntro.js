@@ -17,7 +17,13 @@ export const aiyanaTsukikoClassIntro = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          to: {
+            day: 3,
+            phase: 'Morning'
+          }
+        }
       }
     }
   }

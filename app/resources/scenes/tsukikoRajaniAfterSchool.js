@@ -2,6 +2,7 @@ export const tsukikoRajaniAfterSchool = {
   background: 'ExteriorEmpty',
   name: 'A Critical Moment',
   description:  'Tsukiko and Rajani debate the most important decision of the day.',
+  availability: true,
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {

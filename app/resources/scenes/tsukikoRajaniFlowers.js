@@ -2,6 +2,9 @@ export const tsukikoRajaniFlowers = {
   background: 'ExteriorStudents',
   name: 'Intrinsic Motivation',
   description: 'Why are princesses so ridiculously heroic anyway?',
+  availability: {
+    after: 6
+  },
   initialLine: 'choices01',
   lines: {
     choices01: {
