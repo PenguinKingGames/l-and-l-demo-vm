@@ -2,6 +2,9 @@ export const tsukikoRajaniDemo = {
   background: 'Classroom',
   name: 'When Tsukiko met Rajani',
   description: 'The dashing princess tracks down the Dungeoneering Club President and offers her services.  Dashingly.',
+  availability: {
+    on: 2
+  },
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {

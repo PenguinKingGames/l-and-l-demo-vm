@@ -57,24 +57,70 @@ export default {
         flags: flags
       };
     }
+
     if (action.continueSpec.returnToMap) {
+
+      let newTime = this.checktime(action, state.time);
+      let lifeMap = state.lifeMap;
+      let availableScenes = this.getAvailableScenes(state, newTime);
+
       return {
         ...state,
-        screen: screenTypes.LIFEMAP
+        screen: screenTypes.LIFEMAP,
+        time: newTime,
+        lifeMap: {
+          ...lifeMap,
+          availableScenes: availableScenes
+        }
       }
     }
     if (action.continueSpec.transitionToScene) {
       //TODO: This code is in like three places, DRY it
+      let newTime = this.checktime(action, state.time);
+
       let newScene = state.scenes[action.continueSpec.transitionToScene];
       let selectedScene = {
         ...newScene,
         currentLine: newScene.initialLine
       };
+
+      let lifeMap = state.lifeMap;
+      let usedScenes = lifeMap.usedScenes;
+      usedScenes.push(action.continueSpec.transitionToScene);
+
       return {
         ...state,
         scene: selectedScene,
-        screen: screenTypes.SCENE_TRANSITION
+        screen: screenTypes.SCENE_TRANSITION,
+        time: newTime,
+        lifeMap: {
+          ...lifeMap,
+          usedScenes: usedScenes
+        }
       };
+    }
+  },
+
+  checktime: function(action, time) {
+    let newTime = {
+      day: time.day,
+      phase: time.phase
+    };
+
+    if (action.continueSpec.advanceTime) {
+      if (action.continueSpec.advanceTime.by) {
+        newTime = this.advanceTimeByPhases(time, action.continueSpec.advanceTime.by);
+      }
+
+      if (action.continueSpec.advanceTime.to) {
+        newTime = this.advanceTimeTo(time, action.continueSpec.advanceTime.to.day, action.continueSpec.advanceTime.to.phase);
+      }
+    }
+
+    return {
+      ...time,
+      day: newTime.day,
+      phase: newTime.phase
     }
   },
 
@@ -89,5 +135,112 @@ export default {
       scene: scene,
       screen: screenTypes.SCENE
     };
+  },
+
+  advanceTimeByPhases: function(timeState, phases) {
+    let day = timeState.day;
+    let phase = timeState.phase;
+
+    const advanceOnePhase = function() {
+      //TODO: constants, make less stupid
+      switch (phase) {
+        case 'Evening':
+          day = day + 1;
+          phase = 'Morning';
+          break;
+        case 'After school':
+          phase = 'Evening';
+          break;
+        case 'Afternoon':
+          phase = 'After school';
+          break;
+        case 'Morning':
+          phase = 'Afternoon';
+          break;
+      }
+    };
+
+    for (var i = 0; i < phases - 1; i++) {
+      advanceOnePhase();
+    }
+
+    return {
+      ...timeState,
+      day: day,
+      phase: phase
+    }
+  },
+
+  advanceTimeTo: function(timeState, day, phase) {
+    return {
+      ...timeState,
+      day: day,
+      phase: phase
+    }
+  },
+
+  getAvailableScenes: function(state, time) {
+    let newAvailable = [];
+
+    let sceneKeys = Object.keys(state.scenes);
+
+    sceneKeys.forEach(function(key) {
+
+      if (state.lifeMap.usedScenes.some(function (usedScene) {
+          return usedScene === key;
+        })) {
+        return;
+      }
+
+      if (state.scenes[key]) {
+        let scene = state.scenes[key];
+        let available = !!scene.availability;  //Don't want the object, just its truthiness
+
+        if (available) {
+          if (scene.availability.flag && !state.flags[scene.availability.flag]) {
+            available = false;
+          }
+
+          if (scene.availability.phase && !(time.phase === scene.availability.phase)) {
+            available = false;
+          }
+
+          if (scene.availability.on && !(time.day === scene.availability.on)) {
+            available = false;
+          }
+
+          if (scene.availability.before && !(time.day < scene.availability.before)) {
+            available = false;
+          }
+
+          if (scene.availability.after && !(time.day > scene.availability.after)) {
+            available = false;
+          }
+
+          if (scene.availability.relationship) {
+            let targetRelationship = scene.availability.relationship;
+            let relationshipPresent = false;
+            let relationshipKeys = Object.keys(state.character.relationships);
+
+            relationshipKeys.forEach(function(key) {
+              let relationship = state.character.relationships[key];
+              if (relationship && relationship.characterName === targetRelationship.characterName && relationship.powerTree === targetRelationship.powerTree) {
+                relationshipPresent = true;
+              }
+            });
+
+            if (!relationshipPresent) {
+              available = false;
+            }
+          }
+        }
+
+        if (available) {
+          newAvailable.push(key);
+        }
+      }
+    });
+
+    return newAvailable;
   }
 };

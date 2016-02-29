@@ -2,6 +2,9 @@ export const tsukikoRajaniClubRoom = {
   background: 'Clubroom',
   name: 'How the Mighty Have Fallen',
   description:  'Tsukiko and Rajani survey the remains of the Dungeoneering Club\'s palatial chambers',
+  availability: {
+    before: 3
+  },
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {
@@ -17,7 +20,10 @@ export const tsukikoRajaniClubRoom = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          by: 2
+        }
       }
     }
   }

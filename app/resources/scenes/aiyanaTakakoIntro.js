@@ -2,6 +2,7 @@ export const aiyanaTakakoIntro = {
   background: 'ExteriorEmpty',
   name: 'Introduction',
   description:  'Prototype of the very first scene',
+  availability: true,
   initialLine: 'aiyana01',
   lines: {
     aiyana01: {

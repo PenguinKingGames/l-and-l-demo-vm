@@ -2,6 +2,9 @@ export const tsukikoRajaniChoices = {
   background: 'Classroom',
   name: 'Failing the Witchdel Test',
   description: 'Tsukiko and Rajani discuss a third party romantic interest',
+  availability: {
+    phase: 'Morning'
+  },
   initialLine: 'choices01',
   lines: {
     choices01: {

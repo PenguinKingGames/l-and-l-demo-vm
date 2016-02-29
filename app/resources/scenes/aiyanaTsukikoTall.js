@@ -2,6 +2,9 @@ export const aiyanaTsukikoTall = {
   background: 'Classroom',
   name: 'So damn tall',
   description:  'Mildly ironic given the players',
+  availability: {
+    flag: 'AIYANA_INTRO_BANDITS'
+  },
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {

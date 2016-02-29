@@ -2,6 +2,7 @@ export const tsukikoRajaniAfterSchool = {
   background: 'ExteriorEmpty',
   name: 'A Critical Moment',
   description:  'Tsukiko and Rajani debate the most important decision of the day.',
+  availability: true,
   initialLine: 'tsukiko01',
   lines: {
     tsukiko01: {
@@ -17,7 +18,10 @@ export const tsukikoRajaniAfterSchool = {
         position: 'Right'
       }],
       continueSpec: {
-        returnToMap: true
+        returnToMap: true,
+        advanceTime: {
+          by: 6
+        }
       }
     }
   }

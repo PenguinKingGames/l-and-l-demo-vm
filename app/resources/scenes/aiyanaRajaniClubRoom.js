@@ -2,6 +2,9 @@ export const aiyanaRajaniClubRoom = {
   background: 'Clubroom',
   name: 'Our Hero Arrives',
   description:  'Aiyana finally shows up in this prototype',
+  availability: {
+    flag: 'AIYANA_INTRO_RIVER_MONSTERS'
+  },
   initialLine: 'aiyana01',
   lines: {
     aiyana01: {
