@@ -4,8 +4,8 @@ export const aiyanaTakakoClassroom = {
   description:  'Takako clears up a misconception',
   availability: {
     relationship: {
-        characterName: 'Takako',
-        powerTree: 'girlfriend'
+      characterName: 'Takako',
+      powerTree: 'girlfriend'
     }
   },
   initialLine: 'takako01',
