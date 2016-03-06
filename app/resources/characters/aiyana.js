@@ -18,12 +18,7 @@ export const aiyana = {
   },
   relationships: {
     rose: null,
-    lily: {
-      characterName: 'Takako',
-      relationshipLabel: 'Girlfriend',
-      powerTree: 'girlfriend',
-      power: 'girlfriend1'
-    },
+    lily: null,
     iris: {
       characterName: 'Rajani',
       relationshipLabel: 'The Idol',

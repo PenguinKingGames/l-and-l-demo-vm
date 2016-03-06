@@ -46,6 +46,10 @@ export default {
         }
       }
 
+      if (continueSpec.relationship) {
+        character.relationships[continueSpec.relationship.type] = continueSpec.relationship.newRelationship;
+      }
+
       if (continueSpec.flag) {
         flags[continueSpec.flag] = true;
       }
