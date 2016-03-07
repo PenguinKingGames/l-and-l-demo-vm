@@ -13,6 +13,7 @@ import FlowersBar from 'FlowersBar/FlowersBar'
 import CharacterSheetButton from 'CharacterSheetButton/CharacterSheetButton';
 import CharacterSheet from 'CharacterSheet/CharacterSheet';
 import TimeDisplay from 'TimeDisplay/TimeDisplay';
+import Preloader from 'Preloader/Preloader';
 
 @connect(state => ({
   game: state.game
@@ -72,6 +73,7 @@ export default class Game extends React.Component {
 
       <div>
         {screen}
+        <Preloader></Preloader>
       </div>
     )
   }
