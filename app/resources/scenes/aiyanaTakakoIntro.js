@@ -232,7 +232,7 @@ export const aiyanaTakakoIntro = {
         position: 'Right'
       }],
       continueSpec: {
-        conditional: {
+/*        conditional: {   //TODO: Delete when there are other examples of conditionals lying around
           criteria: [{
             type: 'flag',
             flag: 'AIYANA_INTRO_BANDITS',
@@ -242,15 +242,16 @@ export const aiyanaTakakoIntro = {
             flag: 'AIYANA_INTRO_RIVER_MONSTERS',
             nextLine: 'aiyana08'
           }]
-        }
+        }*/
+        nextLine: 'aiyana07'
       }
     },
     aiyana07: {
       name: 'Aiyana',
-      text: 'Well let\'s see if you have any bandits!',
+      text: 'Why would I care about my status?  I\'m here because this school has a duty, and I only want to do my part.',
       portraits: [{
         character: 'Aiyana',
-        expression: 'Humble',
+        expression: 'Heroic',
         position: 'Left'
       }, {
         character: 'Takako',
@@ -258,24 +259,67 @@ export const aiyanaTakakoIntro = {
         position: 'Right'
       }],
       continueSpec: {
-        transitionToScene: 'aiyanaTsukikoClassIntro'
+        //transitionToScene: 'aiyanaTsukikoClassIntro'
+        nextLine: 'takako09'
+      }
+    },
+    takako09: {
+      name: 'Takako',
+      text: 'If you mean the dungeon below us, the Archduchess has declared the Dreaming Delve conquered by last year\'s Dungeoneering Club, and of no concern to us this year.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Heroic',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Quite',
+        position: 'Right'
+      }],
+      continueSpec: {
+        nextLine: 'aiyana08'
       }
     },
     aiyana08: {
       name: 'Aiyana',
-      text: 'Well let\'s see if you have any river monsters!',
+      text: 'The school has reputedly been guarding against that dungeon for ten thousand years, and your Archduchess has decided to...not bother...this year?',
       portraits: [{
         character: 'Aiyana',
-        expression: 'Humble',
+        expression: 'Grumpy',
         position: 'Left'
       }, {
         character: 'Takako',
-        expression: 'Guarded',
+        expression: 'Quite',
         position: 'Right'
       }],
       continueSpec: {
-        transitionToScene: 'aiyanaTsukikoClassIntro'
+        nextLine: 'takako10'
       }
+    },
+    takako10: {
+      name: 'Takako',
+      text: 'Your Archduchess too, having accepted the school\'s invitation.  Of course, while I would not advance an opinion on her position that a dungeon that has faithfully restocked itself with horrors for all of recorded history will not do so when it would inconvenience her, you are free to do so.',
+      portraits: [{
+        character: 'Aiyana',
+        expression: 'Grumpy',
+        position: 'Left'
+      }, {
+        character: 'Takako',
+        expression: 'Quite',
+        position: 'Right'
+      }],
+      choices: [{
+        text: 'We need a newer, prettier Archduchess',
+        continueSpec: {
+          nextLine: 'aiyana03',
+          flag: 'AIYANA_INTRO_BANDITS'
+        }
+      }, {
+        text: 'I will fight her',
+        continueSpec: {
+          nextLine: 'aiyana05',
+          flag: 'AIYANA_INTRO_RIVER_MONSTERS'
+        }
+      }]
     }
   }
 };

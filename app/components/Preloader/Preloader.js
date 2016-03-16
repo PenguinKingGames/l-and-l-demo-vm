@@ -13,6 +13,7 @@ export default class Preloader extends React.Component {
         <div className={styles.portraitAiyanaEmbarrassed}></div>
         <div className={styles.portraitAiyanaWaiting}></div>
         <div className={styles.portraitAiyanaGrumpy}></div>
+        <div className={styles.portraitAiyanaHeroic}></div>
         <div className={styles.portraitAiyanaHumble}></div>
         <div className={styles.portraitTakakoDefault}></div>
         <div className={styles.portraitTakakoQuite}></div>
